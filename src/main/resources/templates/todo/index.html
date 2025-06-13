@@ -53,6 +53,27 @@
                             <span th:text="${todo.title}" th:class="${todo.completed ? 'line-through text-gray-400' : 'text-gray-800'}"></span>
                         </div>
                         <p th:if="${todo.description}" th:text="${todo.description}" class="text-sm text-gray-500 mt-1 ml-9"></p>
+                        
+                        <div class="text-xs text-gray-400 mt-1 ml-9 space-y-1">
+                            <div th:if="${todo.registrationDate}" class="flex items-center space-x-2">
+                                <span>📅 登録:</span>
+                                <span th:text="${#temporals.format(todo.registrationDate, 'yyyy/MM/dd')}"></span>
+                            </div>
+                            <div th:if="${todo.startDate != null or todo.expectedEndDate != null or todo.actualEndDate != null}" class="flex items-center space-x-4">
+                                <span th:if="${todo.startDate}" class="flex items-center space-x-1">
+                                    <span>🚀 開始:</span>
+                                    <span th:text="${#temporals.format(todo.startDate, 'MM/dd')}"></span>
+                                </span>
+                                <span th:if="${todo.expectedEndDate}" class="flex items-center space-x-1">
+                                    <span>🎯 予定:</span>
+                                    <span th:text="${#temporals.format(todo.expectedEndDate, 'MM/dd')}"></span>
+                                </span>
+                                <span th:if="${todo.actualEndDate}" class="flex items-center space-x-1">
+                                    <span>✅ 完了:</span>
+                                    <span th:text="${#temporals.format(todo.actualEndDate, 'MM/dd')}"></span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="flex space-x-2">
