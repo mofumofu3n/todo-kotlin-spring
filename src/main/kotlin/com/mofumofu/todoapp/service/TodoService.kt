@@ -23,6 +23,10 @@ class TodoService(private val todoRepository: TodoRepository) {
             existingTodo.title = todoDetails.title
             existingTodo.description = todoDetails.description
             existingTodo.completed = todoDetails.completed
+            existingTodo.registrationDate = todoDetails.registrationDate
+            existingTodo.startDate = todoDetails.startDate
+            existingTodo.expectedEndDate = todoDetails.expectedEndDate
+            existingTodo.actualEndDate = todoDetails.actualEndDate
             existingTodo.updatedAt = LocalDateTime.now()
             todoRepository.save(existingTodo)
         }
